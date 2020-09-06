@@ -19,8 +19,9 @@ mongoose.connect("mongodb://localhost/googlebooks",{
 app.use("/api", require("./routes"));
 
 app.get("*", function(req, res){
-    res.sendFile(path.join(__dirname, "client/build/index.html"));
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 })
+
 
 app.listen(PORT, function(){
      console.log(`Connect to ${PORT}`);
