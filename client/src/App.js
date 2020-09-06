@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route} from "react-router-dom";
+import Nav from "./components/Nav";
+import SearchForm from "./components/SearchForm";
+import Results from "./components/Results";
+
+import {Container, Jumbotron} from "react-bootstrap";
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
+import googleBooksApi from "./utils/googleBooksApi";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Nav/>
+    <Container>
+      <Jumbotron>
+        <h1>ReactJS Google Books Search</h1>
+      </Jumbotron>
+      <BrowserRouter>
+        <Route exact path="/" component={Search}/>
+        <Route exact path="/search" component={Search}/>
+        <Route exact path="/saved" component={Saved}/>
+        <Route exact path="/" component={Saved}/>
+      </BrowserRouter>
+    </Container>
     </div>
   );
 }
