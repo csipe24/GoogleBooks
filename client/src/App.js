@@ -4,6 +4,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
 import Results from "./components/Results";
+import NoMatch from "./components/NoMatch";
 
 import {Container, Jumbotron} from "react-bootstrap";
 import Saved from "./pages/Saved";
@@ -22,7 +23,7 @@ function App() {
         <Route exact path="/" component={Search}/>
         <Route exact path="/search" component={Search}/>
         <Route exact path="/saved" component={Saved}/>
-        <Route exact path="/" component={Saved}/>
+        <Route  component={NoMatch}/>
       </BrowserRouter>
     </Container>
     </div>
