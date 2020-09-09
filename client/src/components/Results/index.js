@@ -29,14 +29,14 @@ export const Result = ({book}) =>{
     )
 }
 
-function Results(){
+function Results({results}){
     return(
     <Card>
         <Card.Body>
             <Card.Title>
             Results Here
             </Card.Title>
-            <Result></Result>
+            {results.map(item => <Result key={item.googlebookId} book={item}/>)}
         </Card.Body>
     </Card>
     );

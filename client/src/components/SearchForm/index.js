@@ -2,12 +2,21 @@ import React, {useRef} from "react";
 import {Card, Form, Col, Button} from "react-bootstrap";
 import googleBooksApi from "../../utils/googleBooksApi";
 
-function SearchForm(){
+function SearchForm({setResult}){
     const searchInput = useRef();
     function handleSubmit(e) {
         e.preventDefault();
         googleBooksApi.searchBooks(searchInput.current.value)
-        .then(results => {console.log(results)})
+        .then(results => {
+            setResult(results.data.items.map(item=>({
+            title: item.volumeInfo.title,
+            link: item.volumeInfo.previewLink,
+            description: item.volumeInfo.description,
+            image: item.volumeInfo.imageLinks.thumbnail,
+            authors: item.volumeInfo.author,
+            googlebookid: item.id
+
+        })))})
     }
     return(
         <Card>
