@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter, Route} from "react-router-dom";
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
@@ -12,6 +13,15 @@ import Search from "./pages/Search";
 import googleBooksApi from "./utils/googleBooksApi";
 
 function App() {
+
+  useEffect(() => {
+    googleBooksApi.searchBooks("James Patterson")
+    .then(results => {
+      console.log(results)
+    })
+    .catch(err => {console.log(err)})
+  },[])
+
   return (
     <div className="App">
     <Nav/>

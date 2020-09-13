@@ -13,23 +13,25 @@ function SearchForm({setResult}){
             link: item.volumeInfo.previewLink,
             description: item.volumeInfo.description,
             image: item.volumeInfo.imageLinks.thumbnail,
-            authors: item.volumeInfo.author,
+            authors: item.volumeInfo.authors,
             googlebookid: item.id
 
         })))})
     }
     return(
-        <Card>
+        <Card className="my-4">
             <Card.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group>
+                        <Form.Row>
                         <Form.Label column lg={2}>
                             Search
                         </Form.Label>
                         <Col>
                         <Form.Control type="text" ref={searchInput}/>
                         </Col>
-                        <Form.Row>
+                        </Form.Row>
+                        <Form.Row className="justify-content-lg-end">
                             <Button onClick={handleSubmit}>Search</Button>
                         </Form.Row>
                     </Form.Group>

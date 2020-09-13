@@ -5,16 +5,31 @@ const app = express();
 
 const mongoose = require("mongoose");
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 require("./models");
 
 if(process.env.NODE_ENV === "production"){
     app.use(express.static("client/build"));
 }
 
-mongoose.connect("mongodb://localhost/googlebooks",{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+
+const MONGODB_URI = 'mongodb+srv://csipe24:Chrissipe1@uwcodingbc.d3yqy.mongodb.net/UWCODINGBC?retryWrites=true&w=majority'
+
+
+mongoose
+  .connect(
+    MONGODB_URI || 'mongodb://localhost/googlebooks',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.log(err))
+
 
 app.use("/api", require("./routes"));
 

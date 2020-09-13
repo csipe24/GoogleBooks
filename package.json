@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/csipe24/GoogleBooks#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.3"
   }

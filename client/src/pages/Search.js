@@ -9,7 +9,7 @@ function Search(){
     return(
         <div>
             <SearchForm setResult={setResult}/>
-            <Results/>
+            <Results results={results}/>
         </div>
     );
 }

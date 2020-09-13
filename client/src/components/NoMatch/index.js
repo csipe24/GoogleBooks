@@ -4,7 +4,7 @@ import {Jumbotron} from "react-bootstrap";
 function NoMatch(){
     return(
         <Jumbotron>
-        404 Error
+    
         </Jumbotron>
     )
 }
